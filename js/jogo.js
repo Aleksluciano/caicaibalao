@@ -46,13 +46,13 @@ telaJogo.create = function() {
     this.tempoText = this.add.text(500, 10, 'Tempo: '+ this.tempo, { fontSize: '16px', fill: '#f0ffff' });
 
 
-    //this.estrada = this.physics.add.staticGroup()
+   
     this.estrada = this.physics.add.sprite(640/2, 350, 'estrada');
     this.estrada.body.allowGravity = false;
     this.estrada.body.immovable = true;
 
     this.balao = this.physics.add.sprite(180, -130, 'balao');
-    this.balao.setScale(0.05)
+    this.balao.setScale(0.5)
     this.balao.body.allowGravity = false;
 
     this.meteoro = this.physics.add.sprite(80, -30, 'meteoro');
@@ -60,7 +60,6 @@ telaJogo.create = function() {
 
     this.carro = this.physics.add.sprite(600, 310, 'carro');
     this.carro.setBounce(0.2);
-    //this.carro.setCollideWorldBounds(true);
     this.carro.setScale(0.5);
 
     
@@ -83,13 +82,10 @@ telaJogo.create = function() {
     this.botaoSeta = this.input.keyboard.createCursorKeys();
 
    
-    //this.physics.add.overlap(this.boneco, this.balao, coletaBalao, null, this);
+  
 };
 
-function coletaBalao ( boneco, balao) {
-   // balao.disableBody(true, true);
-   // console.log(balao)
-}
+
 
 
 telaJogo.update = function(){
@@ -183,16 +179,7 @@ telaJogo.update = function(){
     this.carro.x -= 1.8;
     this.physics.world.wrap(this.carro, 45);
     
-
-    // if(this.carro.x < 0 ){
-        
-    //      this.carro.x = 700
-    //      this.carro.setScale(0.5);
-     
-     
-    //  }
-
-    
+   
     
     if(this.boneco.x >= this.carro.x - 60 && this.boneco.x <= this.carro.x - 50 && this.boneco.y > 285){
         this.cameras.main.shake(500);
@@ -203,10 +190,9 @@ telaJogo.update = function(){
         this.scoreText.setText('Pontos: ' + this.score);
 
     }
-    //let zoneFrenteDoCarro = this.add.zone(this.carro.x -20, 200).setSize(200, 200);
+  
 
 
-    //this.timer.timeScale = 2;
     this.tempoSegundos = this.timer.getElapsedSeconds();
     let formatTempo = this.tempoSegundos.toString()
     let index = formatTempo.indexOf('.');
@@ -232,6 +218,9 @@ let config = {
   },
   audio: {
     disableWebAudio: true
+},
+fps:{
+    target: 40
 }
 }
 
