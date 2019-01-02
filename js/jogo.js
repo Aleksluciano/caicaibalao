@@ -212,7 +212,7 @@ telaJogo.update = function(){
     let index = formatTempo.indexOf('.');
     let segundos = formatTempo.substr(0,index);
     this.tempoText.setText('Tempo: ' + segundos);
-    if(segundos == "10")
+    if(segundos == "60")
     return this.gameOver();
 }
 
